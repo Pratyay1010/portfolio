@@ -134,7 +134,7 @@ renderProjects();
 // ======================================================
 
 let darkMode =
-  localStorage.getItem("theme") === "light";
+  localStorage.getItem("theme") !== "light";
 
 function applyTheme() {
 
