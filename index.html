@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Pratyay Das</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    :root{
+      --transition:all .3s ease;
+    }
+
+    html{
+      scroll-behavior:smooth;
+      scroll-padding-top:90px;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      transition:var(--transition);
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+    }
+
+    /* =======================================================
+       LIGHT MODE
+    ======================================================= */
+
+    body:not(.dark){
+
+      background:
+        radial-gradient(circle at top left,
+          rgba(255,255,255,.82),
+          transparent 28%),
+
+        radial-gradient(circle at bottom right,
+          rgba(180,140,110,.08),
+          transparent 35%),
+
+        linear-gradient(
+          to bottom,
+          #f5f1eb,
+          #ece4da
+        );
+
+      color:#181614;
+    }
+
+    /* =======================================================
+       DARK MODE
+    ======================================================= */
+
+    body.dark{
+
+      background:
+        radial-gradient(circle at top left,
+          rgba(124,58,237,.14),
+          transparent 25%),
+
+        radial-gradient(circle at bottom right,
+          rgba(59,130,246,.08),
+          transparent 30%),
+
+        #09090f;
+
+      color:#f5f5f5;
+    }
+
+    /* =======================================================
+       HERO
+    ======================================================= */
+
+    .hero-bg{
+      position:relative;
+      overflow:hidden;
+    }
+
+    body:not(.dark) .hero-bg{
+
+      background:
+        radial-gradient(circle at 15% 20%,
+          rgba(255,255,255,.92),
+          transparent 30%),
+
+        radial-gradient(circle at 85% 80%,
+          rgba(139,92,246,.08),
+          transparent 28%),
+
+        linear-gradient(
+          to bottom right,
+          #f8f4ef,
+          #eee5da
+        );
+    }
+
+    body.dark .hero-bg{
+
+      background:
+        radial-gradient(circle at 20% 20%,
+          rgba(139,92,246,.16),
+          transparent 30%),
+
+        radial-gradient(circle at 80% 70%,
+          rgba(59,130,246,.10),
+          transparent 30%),
+
+        linear-gradient(to bottom right,
+          #0c0c14,
+          #12121d);
+    }
+
+    /* =======================================================
+       NAVBAR
+    ======================================================= */
+
+    .navbar-custom{
+      transition:var(--transition);
+    }
+
+    body:not(.dark) .navbar-custom{
+
+      background:rgba(255,255,255,.58);
+
+      backdrop-filter:blur(22px);
+
+      border-bottom:1px solid rgba(0,0,0,.05);
+
+      box-shadow:
+        0 8px 30px rgba(0,0,0,.05);
+    }
+
+    body.dark .navbar-custom{
+
+      background:rgba(10,10,16,.78);
+
+      backdrop-filter:blur(22px);
+
+      border-bottom:1px solid rgba(139,92,246,.18);
+
+      box-shadow:
+        0 10px 35px rgba(0,0,0,.45);
+    }
+
+    /* =======================================================
+       NAVBAR TEXT FIX
+    ======================================================= */
+
+    body:not(.dark) .desktop-nav a{
+      color:#1a1817;
+    }
+
+    body:not(.dark) .desktop-nav a:hover{
+      color:#7c3aed;
+    }
+
+    body.dark .desktop-nav a{
+      color:#f5f5f5;
+    }
+
+    body.dark .desktop-nav a:hover{
+      color:#a78bfa;
+    }
+
+    /* =======================================================
+       MOBILE MENU
+    ======================================================= */
+
+    #mobileMenu{
+      display:none;
+    }
+
+    #mobileMenu.active{
+      display:block;
+    }
+
+    body:not(.dark) #mobileMenu > div{
+
+      background:rgba(255,255,255,.92);
+
+      border:1px solid rgba(0,0,0,.06);
+
+      color:#161210;
+
+    }
+
+    body.dark #mobileMenu > div{
+
+      background:rgba(10,10,16,.94);
+
+      border:1px solid rgba(139,92,246,.18);
+
+      color:white;
+
+    }
+
+    /* =======================================================
+       SECTION COLORS
+    ======================================================= */
+
+    section{
+      position:relative;
+    }
+
+    body:not(.dark) section::before{
+
+      content:"";
+
+      position:absolute;
+
+      top:0;
+      left:0;
+
+      width:100%;
+      height:1px;
+
+      background:
+        linear-gradient(
+          to right,
+          transparent,
+          rgba(90,70,50,.08),
+          transparent
+        );
+    }
+
+    body:not(.dark) #projects{
+
+      background:
+        linear-gradient(
+          to bottom,
+          #f5efe8,
+          #eadfd3
+        );
+    }
+
+    body:not(.dark) #publications{
+
+      background:
+        linear-gradient(
+          to bottom,
+          #eadfd3,
+          #dfd0c2
+        );
+    }
+
+    body:not(.dark) #experience{
+
+      background:
+        linear-gradient(
+          to bottom,
+          #dfd0c2,
+          #d3c0b0
+        );
+    }
+
+    body:not(.dark) #contact{
+
+      background:
+        linear-gradient(
+          to bottom,
+          #d3c0b0,
+          #c8b29f
+        );
+    }
+
+    body.dark #projects{
+      background:
+        radial-gradient(circle at top left,
+          rgba(124,58,237,.10),
+          transparent 28%),
+
+        linear-gradient(
+          to bottom,
+          #0b0b12,
+          #11111a
+        );
+    }
+
+    body.dark #publications{
+      background:
+        radial-gradient(circle at top right,
+          rgba(59,130,246,.10),
+          transparent 30%),
+
+        linear-gradient(
+          to bottom,
+          #11111a,
+          #161624
+        );
+    }
+
+    body.dark #experience{
+      background:
+        radial-gradient(circle at bottom left,
+          rgba(16,185,129,.08),
+          transparent 30%),
+
+        linear-gradient(
+          to bottom,
+          #161624,
+          #1d1d2c
+        );
+    }
+
+    body.dark #contact{
+      background:
+        radial-gradient(circle at bottom right,
+          rgba(245,158,11,.08),
+          transparent 32%),
+
+        linear-gradient(
+          to bottom,
+          #1d1d2c,
+          #262638
+        );
+    }
+
+    /* =======================================================
+       SECTION BOX BASE
+    ======================================================= */
+
+    body:not(.dark) .section-box{
+
+      background:
+        linear-gradient(
+          to bottom right,
+          rgba(255,255,255,.38),
+          rgba(255,248,242,.22)
+        );
+
+      backdrop-filter:blur(18px);
+
+      border:1px solid rgba(80,60,40,.06);
+
+      box-shadow:
+        0 14px 40px rgba(80,50,20,.06);
+    }
+
+    body.dark .section-box{
+
+      backdrop-filter:blur(14px);
+
+      border:1px solid rgba(139,92,246,.15);
+
+      box-shadow:
+        0 20px 55px rgba(0,0,0,.48);
+    }
+
+    .section-box{
+      border-radius:28px;
+      padding:1.5rem;
+      position:relative;
+      overflow:hidden;
+      transition:var(--transition);
+    }
+
+    /* =======================================================
+       INDIVIDUAL SECTION IDENTITIES
+    ======================================================= */
+
+    #projects .section-box{
+      border-top:1px solid rgba(139,92,246,.25);
+    }
+
+    body:not(.dark) #projects .section-box{
+      background:
+        linear-gradient(
+          to bottom right,
+          rgba(255,255,255,.28),
+          rgba(232,220,245,.32)
+        );
+    }
+
+    body.dark #projects .section-box{
+      background:
+        linear-gradient(
+          to bottom right,
+          rgba(20,20,32,.92),
+          rgba(16,16,26,.96)
+        );
+    }
+
+    #publications .section-box{
+      border-top:1px solid rgba(59,130,246,.22);
+    }
+
+    body:not(.dark) #publications .section-box{
+      background:
+        linear-gradient(
+          to bottom right,
+          rgba(255,255,255,.24),
+          rgba(220,228,240,.32)
+        );
+    }
+
+    body.dark #publications .section-box{
+      background:
+        linear-gradient(
+          to bottom right,
+          rgba(18,22,36,.92),
+          rgba(14,18,30,.96)
+        );
+    }
+
+    #experience .section-box{
+      border-top:1px solid rgba(16,185,129,.22);
+    }
+
+    body:not(.dark) #experience .section-box{
+      background:
+        linear-gradient(
+          to bottom right,
+          rgba(255,255,255,.22),
+          rgba(221,234,223,.32)
+        );
+    }
+
+    body.dark #experience .section-box{
+      background:
+        linear-gradient(
+          to bottom right,
+          rgba(16,28,24,.92),
+          rgba(12,22,20,.96)
+        );
+    }
+
+    #contact .section-box{
+      border-top:1px solid rgba(245,158,11,.25);
+    }
+
+    body:not(.dark) #contact .section-box{
+      background:
+        linear-gradient(
+          to bottom right,
+          rgba(255,255,255,.20),
+          rgba(240,228,210,.34)
+        );
+    }
+
+    body.dark #contact .section-box{
+      background:
+        linear-gradient(
+          to bottom right,
+          rgba(34,24,14,.92),
+          rgba(24,18,12,.96)
+        );
+    }
+
+    /* =======================================================
+       CARDS
+    ======================================================= */
+
+    .card-modern{
+      border-radius:22px;
+      padding:1.1rem;
+      transition:all .28s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    body:not(.dark) .card-modern{
+
+      background:
+        linear-gradient(
+          to bottom right,
+          rgba(255,255,255,.82),
+          rgba(248,241,233,.96)
+        );
+
+      border:1px solid rgba(120,90,60,.08);
+
+      box-shadow:
+        0 12px 30px rgba(120,90,60,.08),
+        inset 0 1px 0 rgba(255,255,255,.55);
+    }
+
+    body.dark .card-modern{
+
+      background:
+        linear-gradient(
+          to bottom right,
+          rgba(25,25,38,.95),
+          rgba(17,17,28,.98)
+        );
+
+      border:1px solid rgba(139,92,246,.18);
+
+      box-shadow:
+        0 15px 40px rgba(0,0,0,.48),
+        inset 0 1px 0 rgba(255,255,255,.03);
+    }
+
+    .card-modern:hover{
+      transform:translateY(-5px);
+    }
+
+    /* =======================================================
+       BUTTONS
+    ======================================================= */
+
+    .btn-primary{
+      border-radius:14px;
+      transition:all .3s ease;
+      font-weight:600;
+
+      position:relative;
+      overflow:hidden;
+
+      box-shadow:
+        0 8px 24px rgba(124,58,237,.18);
+    }
+
+    .btn-primary:hover{
+
+      transform:translateY(-2px);
+
+      box-shadow:
+        0 12px 30px rgba(124,58,237,.28);
+
+      border-color:
+        rgba(255,255,255,.18);
+    }
+    
+    body:not(.dark) .btn-primary{
+
+      background:
+        linear-gradient(
+          to right,
+          #2a211d,
+          #3b2e28
+        );
+
+      color:white;
+
+      box-shadow:
+        0 10px 24px rgba(50,30,15,.16);
+    }
+
+    body.dark .btn-primary{
+      background:
+        linear-gradient(to right,#7c3aed,#8b5cf6);
+      color:white;
+    }
+
+    .btn-outline{
+      border-radius:14px;
+      transition:var(--transition);
+      backdrop-filter:blur(10px);
+    }
+
+    body:not(.dark) .btn-outline{
+
+      border:1px solid rgba(60,40,20,.08);
+
+      background:rgba(255,255,255,.45);
+
+      color:#201b18;
+    }
+
+    body.dark .btn-outline{
+      border:1px solid rgba(139,92,246,.28);
+      background:rgba(255,255,255,.03);
+      color:white;
+    }
+
+    /* =======================================================
+       BADGES
+    ======================================================= */
+
+    .badge{
+      border-radius:999px;
+      padding:.45rem .8rem;
+      font-size:11px;
+      font-weight:600;
+    }
+
+    body:not(.dark) .badge{
+
+      background:
+        rgba(255,255,255,.65);
+
+      border:
+        1px solid rgba(139,92,246,.10);
+
+      color:#5c4335;
+
+      backdrop-filter:blur(8px);
+    }
+
+    body.dark .badge{
+      background:rgba(139,92,246,.12);
+      border:1px solid rgba(139,92,246,.22);
+      color:#dcc7ff;
+    }
+
+    /* =======================================================
+       MOBILE FIXES
+    ======================================================= */
+
+    @media (max-width:1024px){
+
+      .hero-wrapper{
+        display:flex;
+        flex-direction:column;
+        text-align:center;
+      }
+
+      .hero-image{
+        order:1;
+        margin-bottom:1rem;
+      }
+
+      .hero-content{
+        order:2;
+      }
+
+    }
+
+    @media (max-width:768px){
+
+      .desktop-nav{
+        display:none !important;
+      }
+
+      .mobile-btn{
+        display:flex !important;
+      }
+
+      .navbar-custom{
+        padding-top:.15rem;
+        padding-bottom:.15rem;
+      }
+
+    }
+
+    @media (min-width:769px){
+
+      .mobile-btn{
+        display:none;
+      }
+
+    }
+
+    @media (max-width:640px){
+
+      #home{
+        padding-top:8.5rem !important;
+        padding-bottom:2rem !important;
+      }
+
+      .hero-title{
+        font-size:2rem !important;
+        line-height:1.05 !important;
+      }
+
+      .hero-desc{
+        font-size:.92rem !important;
+        line-height:1.55 !important;
+      }
+
+      .section-box{
+        padding:1rem;
+      }
+
+      .mobile-buttons{
+        justify-content:center;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body class="text-gray-900 dark:text-white duration-300">
+
+  <!-- NAVBAR -->
+
+  <nav class="navbar-custom fixed top-0 left-0 w-full z-50">
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-5 py-3 flex items-center justify-between gap-3">
+
+      <!-- LEFT -->
+
+      <div class="shrink-0">
+
+        <h1 class="text-lg sm:text-xl font-black tracking-tight leading-none">
+          Pratyay Das
+        </h1>
+
+        <p class="text-[11px] sm:text-xs opacity-70 mt-1">
+          Vision • Robotics • RL
+        </p>
+
+      </div>
+
+      <!-- DESKTOP NAV -->
+
+      <div class="desktop-nav hidden md:flex items-center gap-7 text-sm font-medium">
+
+        <a href="#home">Home</a>
+        <a href="#research">Research</a>
+        <a href="#projects">Projects</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+
+      </div>
+
+      <!-- RIGHT -->
+
+      <div class="flex items-center gap-2 sm:gap-3">
+
+        <button
+          id="themeToggle"
+          class="
+            w-10
+            h-10
+            rounded-xl
+            border
+            border-white/10
+            flex
+            items-center
+            justify-center
+            text-sm
+          "
+        >
+          🌙
+        </button>
+
+        <button
+          id="mobileMenuBtn"
+          class="
+            mobile-btn
+            md:hidden
+            w-10
+            h-10
+            rounded-xl
+            border
+            border-white/10
+            flex
+            items-center
+            justify-center
+            text-lg
+          "
+        >
+          ☰
+        </button>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+  <!-- MOBILE MENU -->
+
+  <div
+    id="mobileMenu"
+    class="fixed top-[76px] left-0 w-full z-[999] px-4"
+  >
+
+    <div class="
+      rounded-2xl
+      p-4
+      mt-2
+      backdrop-blur-xl
+      border
+      flex
+      flex-col
+      gap-4
+      text-sm
+      shadow-2xl
+    ">
+
+      <a href="#home">Home</a>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+
+    </div>
+
+  </div>
+
+  <!-- HERO -->
+
+  <section
+    id="home"
+    class="hero-bg px-4 sm:px-6"
+    style="padding:5rem 0 3rem 0;"
+  >
+
+    <div class="max-w-6xl mx-auto">
+
+      <div class="section-box">
+
+        <div class="hero-wrapper grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+
+          <!-- IMAGE -->
+
+          <div class="hero-image flex justify-center lg:justify-end lg:order-2">
+
+            <div class="relative">
+
+              <div class="absolute inset-0 bg-purple-500/20 blur-3xl rounded-full"></div>
+
+              <img
+                src="assets/profile.png"
+                alt="Pratyay Das"
+                class="relative
+                       w-28
+                       sm:w-36
+                       md:w-52
+                       lg:w-72
+                       rounded-[28px]
+                       shadow-2xl
+                       object-cover
+                       border
+                       border-white/10"
+              >
+
+            </div>
+
+          </div>
+
+          <!-- CONTENT -->
+
+          <div class="hero-content lg:order-1">
+
+            <h1 class="hero-title text-3xl sm:text-4xl lg:text-6xl font-black tracking-tight leading-[1.05] mb-3">
+              Pratyay Das
+            </h1>
+
+            <p class="text-purple-500 font-semibold text-base sm:text-lg mb-4">
+              Robotics Researcher • Computer Vision • Reinforcement Learning
+            </p>
+
+            <p class="hero-desc max-w-2xl text-sm sm:text-[15px] lg:text-base leading-relaxed tracking-[0.01em] mb-5 mx-auto lg:mx-0">
+
+              M.Tech in Robotics at IIT Delhi building perception-driven autonomous
+              systems through computer vision, reinforcement learning, and embodied AI.
+
+              Focused on robotic perception, autonomous navigation, multimodal learning,
+              and deployment-aware intelligent systems for real-world environments.
+
+            </p>
+
+            <div class="flex flex-wrap gap-2 mb-6 justify-center lg:justify-start">
+
+              <span class="badge">Computer Vision</span>
+              <span class="badge">Robot Perception</span>
+              <span class="badge">Reinforcement Learning</span>
+              <span class="badge">Embodied AI</span>
+              <span class="badge">Autonomous Robotics</span>
+
+            </div>
+
+            <div class="mobile-buttons flex flex-wrap gap-3">
+
+              <a
+                href="#projects"
+                class="btn-primary px-5 py-3 text-sm"
+              >
+                View Projects
+              </a>
+
+              <a
+                href="#contact"
+                class="btn-outline px-5 py-3 text-sm"
+              >
+                Contact
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- RESEARCH INTERESTS -->
+
+<section id="research" class="py-12 px-4 sm:px-6">
+
+  <div class="max-w-6xl mx-auto">
+
+    <div class="section-box">
+
+      <div class="mb-7">
+
+        <span class="badge">Research Interests</span>
+
+        <h2 class="text-2xl md:text-3xl font-black mt-4 mb-3">
+          Research Focus
+        </h2>
+
+        <p class="text-sm leading-relaxed max-w-3xl opacity-90">
+          My research interests lie at the intersection of computer vision,
+          reinforcement learning, and robotics perception for autonomous systems.
+          I am particularly interested in embodied intelligence, multimodal
+          perception, safe reinforcement learning, and deployment-aware AI
+          systems operating under real-world constraints.
+        </p>
+
+      </div>
+
+      <div class="flex flex-wrap gap-3 mt-6">
+
+        <span class="badge">Embodied AI</span>
+        <span class="badge">Robot Perception</span>
+        <span class="badge">Vision-Language Models</span>
+        <span class="badge">Safe Reinforcement Learning</span>
+        <span class="badge">Autonomous Navigation</span>
+        <span class="badge">Edge AI</span>
+        <span class="badge">Multi-Agent Systems</span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+  <!-- PROJECTS -->
+
+  <section id="projects" class="py-12 px-4 sm:px-6">
+
+    <div class="max-w-6xl mx-auto">
+
+      <div class="section-box">
+
+        <div class="mb-7">
+
+          <span class="badge">Research & Engineering</span>
+
+          <h2 class="text-2xl md:text-3xl font-black mt-4 mb-2">
+            Selected Research Projects
+          </h2>
+
+          <p class="text-sm opacity-80 max-w-2xl">
+            Projects exploring robotic perception, reinforcement learning,
+            multimodal vision systems, and deployment-aware autonomous intelligence.
+          </p>
+
+        </div>
+
+        <div id="projectGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PUBLICATIONS -->
+
+  <section id="publications" class="py-12 px-4 sm:px-6">
+
+    <div class="max-w-5xl mx-auto">
+
+      <div class="section-box">
+
+        <div class="mb-6">
+
+          <span class="badge">Research</span>
+
+          <h2 class="text-2xl md:text-3xl font-black mt-4 mb-2">
+            Publications
+          </h2>
+
+          <p class="text-sm opacity-80 max-w-2xl">
+            Research contributions in robotic perception, neural intent decoding,
+            and intelligent autonomous systems.
+          </p>
+
+        </div>
+
+        <div class="card-modern">
+
+          <div class="text-xs text-purple-500 font-semibold mb-2">
+            BOOK CHAPTER • 2024
+          </div>
+
+          <h3 class="text-xl font-bold mb-3 leading-snug">
+            Machine Learning Approach for Robot Navigation Using Motor Imagery Signals
+          </h3>
+
+          <p class="text-sm leading-relaxed opacity-90">
+            Explored EEG-based robotic navigation for assistive autonomous systems by
+            decoding motor imagery signals into navigation commands. Developed signal
+            processing and machine learning pipelines using frequency-domain feature
+            extraction and dimensionality reduction to enable reliable intention-aware
+            control for human-robot interaction.
+          </p>
+
+          <div class="flex flex-wrap gap-2 mt-5 mb-5">
+
+            <span class="badge">Brain-Computer Interface</span>
+            <span class="badge">Robot Navigation</span>
+            <span class="badge">EEG Signal Processing</span>
+            <span class="badge">Human-Robot Interaction</span>
+
+          </div>
+
+          <a
+            href="https://doi.org/10.4018/978-1-6684-9999-3.ch007"
+            target="_blank"
+            class="btn-outline inline-flex items-center px-4 py-2 text-sm"
+          >
+            View Publication
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- EXPERIENCE -->
+
+  <section id="experience" class="py-12 px-4 sm:px-6">
+
+    <div class="max-w-5xl mx-auto">
+
+      <div class="section-box">
+
+        <div class="mb-6">
+
+          <span class="badge">Research & Industry</span>
+
+          <h2 class="text-2xl md:text-3xl font-black mt-4 mb-2">
+            Experience
+          </h2>
+
+          <p class="text-sm opacity-80 max-w-2xl">
+            Research experience in embedded perception, edge AI deployment,
+            and autonomous vision systems.
+          </p>
+
+        </div>
+
+        <div class="card-modern">
+
+          <div class="text-xs text-purple-500 font-semibold mb-2">
+            SONY SSUP RESEARCH INTERN • IIT DELHI
+          </div>
+
+          <h3 class="text-xl font-bold mb-5 leading-snug">
+            Embedded Vision for Autonomous Additive Manufacturing
+          </h3>
+
+          <ul class="space-y-4 text-sm leading-relaxed opacity-90 list-disc pl-5">
+
+            <li>
+              Worked on real-time defect detection for autonomous multi-axis
+              additive manufacturing using Sony IMX500 AI camera hardware and
+              embedded computer vision pipelines.
+            </li>
+
+            <li>
+              Explored lightweight detection and segmentation architectures for
+              deployment-aware perception under strict edge-compute, latency,
+              and memory constraints.
+            </li>
+
+            <li>
+              Investigated quantized inference, ROI-based preprocessing, and
+              multi-camera monitoring pipelines for robust in-situ defect
+              detection during active printing operations.
+            </li>
+
+            <li>
+              Evaluated the trade-off between perception accuracy, inference
+              stability, and hardware efficiency for reliable edge AI deployment
+              in autonomous manufacturing environments.
+            </li>
+
+          </ul>
+
+          <div class="flex flex-wrap gap-2 mt-6">
+
+            <span class="badge">Sony IMX500</span>
+            <span class="badge">Embedded Vision</span>
+            <span class="badge">Edge AI</span>
+            <span class="badge">Computer Vision</span>
+            <span class="badge">Quantized Inference</span>
+            <span class="badge">Autonomous Manufacturing</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact" class="py-12 px-4 sm:px-6">
+
+    <div class="max-w-4xl mx-auto">
+
+      <div class="section-box text-center">
+
+        <span class="badge">Connect</span>
+
+        <h2 class="text-2xl md:text-4xl font-black mt-5 mb-3">
+          Let's Build Intelligent Systems
+        </h2>
+
+        <p class="text-sm leading-relaxed max-w-xl mx-auto mb-7">
+          Open to robotics, perception, reinforcement learning,
+          and autonomous systems collaborations.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-3">
+
+          <a
+            href="mailto:pratyaydas123@gmail.com"
+            class="btn-primary px-6 py-3 text-sm"
+          >
+            Email
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/pratyaydas/"
+            target="_blank"
+            class="btn-outline px-6 py-3 text-sm"
+          >
+            LinkedIn
+          </a>
+
+          <a
+            href="https://github.com/Pratyay1010"
+            target="_blank"
+            class="btn-outline px-6 py-3 text-sm"
+          >
+            GitHub
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer class="py-8 text-center text-sm opacity-70">
+    © 2026 Pratyay Das
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
